@@ -11,6 +11,13 @@
             background-color: #1a1a1a;
             color: #e0e0e0;
             overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 0.5s;
+            scroll-snap-type: y mandatory;
+        }
+
+        .fade-out {
+            opacity: 0 !important;
         }
 
         #scene-container {
@@ -25,9 +32,6 @@
         .content {
             position: relative;
             z-index: 1;
-            padding: 50px;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         h1, h2 {
@@ -45,7 +49,7 @@
             font-size: 2em;
             border-bottom: 1px solid #444;
             padding-bottom: 10px;
-            margin-top: 50px;
+            margin-top: 0;
         }
 
         p {
@@ -53,15 +57,22 @@
             line-height: 1.6;
             text-align: justify;
         }
+        
+        header, .section, footer {
+            height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            scroll-snap-align: start;
+        }
 
         .section {
             opacity: 0;
             transform: translateY(50px);
             transition: opacity 0.5s ease, transform 0.5s ease;
-            background-color: rgba(26, 26, 26, 0.7);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
         }
 
         .section.visible {
@@ -69,7 +80,15 @@
             transform: translateY(0);
         }
 
-        header {
+        .section-inner {
+            background-color: rgba(26, 26, 26, 0.7);
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 800px;
+        }
+
+        header .section-inner {
+            background-color: transparent;
             text-align: center;
         }
 
@@ -91,9 +110,6 @@
         }
         
         footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
             color: #888;
         }
     </style>
@@ -102,26 +118,36 @@
     <div id="scene-container"></div>
     <div class="content">
         <header>
-            <h1>The Ones Who Walk Away from Omelas</h1>
-            <a href="story/index.html" class="cta-button">Experience the Interactive Story</a>
+            <div class="section-inner">
+                <h1>The Ones Who Walk Away from Omelas</h1>
+                <a href="story/index.html" class="cta-button">Experience the Interactive Story</a>
+            </div>
         </header>
         <section class="section" id="plot">
-            <h2>The Plot</h2>
-            <p>The story opens with a vivid description of the city of Omelas, a utopian paradise where the citizens are intelligent, sophisticated, and compassionate. They live in a state of perpetual happiness, free from suffering, war, or guilt. The city is celebrating its summer festival, a joyous occasion with music, dancing, and a race of young people on horseback.</p>
-            <p>However, the narrator reveals a dark secret that underpins this perfect society. The happiness of Omelas is contingent upon the perpetual misery of a single child, who is locked away in a dark, squalid room, living in a state of constant fear, neglect, and suffering. All citizens of Omelas, upon reaching a certain age, are made aware of the child's existence and the terrible bargain that sustains their happiness.</p>
+            <div class="section-inner">
+                <h2>The Plot</h2>
+                <p>The story opens with a vivid description of the city of Omelas, a utopian paradise where the citizens are intelligent, sophisticated, and compassionate. They live in a state of perpetual happiness, free from suffering, war, or guilt. The city is celebrating its summer festival, a joyous occasion with music, dancing, and a race of young people on horseback.</p>
+                <p>However, the narrator reveals a dark secret that underpins this perfect society. The happiness of Omelas is contingent upon the perpetual misery of a single child, who is locked away in a dark, squalid room, living in a state of constant fear, neglect, and suffering. All citizens of Omelas, upon reaching a certain age, are made aware of the child's existence and the terrible bargain that sustains their happiness.</p>
+            </div>
         </section>
         <section class="section" id="themes">
-            <h2>The Themes</h2>
-            <p>The story explores several profound philosophical themes, most notably the conflict between utilitarianism and individual rights. It questions whether the happiness of the many can justify the suffering of the few, forcing the reader to confront uncomfortable questions about morality, justice, and the nature of happiness itself.</p>
-            <p>Another central theme is the idea of a scapegoat, a single individual who is made to bear the sins and suffering of the entire community. The child in the story serves as a symbol of the oppressed and marginalized, those who are sacrificed for the sake of the greater good.</p>
+            <div class="section-inner">
+                <h2>The Themes</h2>
+                <p>The story explores several profound philosophical themes, most notably the conflict between utilitarianism and individual rights. It questions whether the happiness of the many can justify the suffering of the few, forcing the reader to confront uncomfortable questions about morality, justice, and the nature of happiness itself.</p>
+                <p>Another central theme is the idea of a scapegoat, a single individual who is made to bear the sins and suffering of the entire community. The child in the story serves as a symbol of the oppressed and marginalized, those who are sacrificed for the sake of the greater good.</p>
+            </div>
         </section>
         <section class="section" id="messages">
-            <h2>The Messages</h2>
-            <p>The story's most powerful message is delivered through the actions of those who choose to walk away from Omelas. Unable to reconcile themselves with the injustice that underpins their society, they silently leave the city, venturing into an unknown and uncertain future. Their departure is a powerful act of defiance, a rejection of a flawed utopia and a testament to the human capacity for empathy and moral courage.</p>
-            <p>Ultimately, "The Ones Who Walk Away from Omelas" is a story that challenges our own moral certainties and forces us to consider the hidden costs of our own happiness. It reminds us that true utopia cannot be built on a foundation of suffering and that sometimes, the most ethical choice is to walk away from a system that is fundamentally unjust.</p>
+            <div class="section-inner">
+                <h2>The Messages</h2>
+                <p>The story's most powerful message is delivered through the actions of those who choose to walk away from Omelas. Unable to reconcile themselves with the injustice that underpins their society, they silently leave the city, venturing into an unknown and uncertain future. Their departure is a powerful act of defiance, a rejection of a flawed utopia and a testament to the human capacity for empathy and moral courage.</p>
+                <p>Ultimately, "The Ones Who Walk Away from Omelas" is a story that challenges our own moral certainties and forces us to consider the hidden costs of our own happiness. It reminds us that true utopia cannot be built on a foundation of suffering and that sometimes, the most ethical choice is to walk away from a system that is fundamentally unjust.</p>
+            </div>
         </section>
         <footer>
-            <p>A web experience based on the short story by Ursula K. Le Guin.</p>
+            <div class="section-inner">
+                <p>A web experience based on the short story by Ursula K. Le Guin.</p>
+            </div>
         </footer>
     </div>
 
@@ -137,7 +163,7 @@
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-        let scene, camera, renderer, controls, particleSystem;
+        let scene, camera, renderer, controls, world, cars = [], streets = [], intersectionMap;
 
         function init() {
             scene = new THREE.Scene();
@@ -146,49 +172,232 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             document.getElementById('scene-container').appendChild(renderer.domElement);
 
-            // Particles
-            const particles = 20000;
-            const geometry = new THREE.BufferGeometry();
-            const positions = new Float32Array(particles * 3);
-            const colors = new Float32Array(particles * 3);
+            world = new THREE.Group();
+            scene.add(world);
 
-            const color = new THREE.Color();
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 2);
+            world.add(ambientLight);
 
-            for (let i = 0; i < positions.length; i += 3) {
-                positions[i] = (Math.random() - 0.5) * 15;
-                positions[i+1] = (Math.random() - 0.5) * 15;
-                positions[i+2] = (Math.random() - 0.5) * 15;
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+            directionalLight.position.set(5, 10, 7.5);
+            world.add(directionalLight);
+            
+            // Ground
+            const groundGeometry = new THREE.PlaneGeometry(100, 100);
+            const groundMaterial = new THREE.MeshStandardMaterial({ color: 0x0a0a0a, roughness: 0.9, metalness: 0.1, transparent: true });
+            
+            // Create a blurred edge for the ground
+            const canvas = document.createElement('canvas');
+            canvas.width = 256;
+            canvas.height = 256;
+            const context = canvas.getContext('2d');
+            const gradient = context.createRadialGradient(128, 128, 0, 128, 128, 128);
+            gradient.addColorStop(0, 'rgba(255,255,255,1)');
+            gradient.addColorStop(0.8, 'rgba(255,255,255,1)');
+            gradient.addColorStop(1, 'rgba(255,255,255,0)');
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, 256, 256);
+            const groundTexture = new THREE.CanvasTexture(canvas);
+            groundMaterial.alphaMap = groundTexture;
 
-                const randomValue = Math.random();
-                if (randomValue > 0.95) { 
-                    color.set(0x99ccff); 
-                } else { 
-                    const intensity = Math.random() * 0.5 + 0.5;
-                    color.setRGB(intensity, intensity, intensity);
+            const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+            ground.rotation.x = -Math.PI / 2;
+            world.add(ground);
+
+            // Streets
+            const streetGroup = new THREE.Group();
+            const streetParticleMaterial = new THREE.PointsMaterial({ size: 0.03, color: 0x444444 });
+            
+            const generateStreets = () => {
+                const streetPoints = [];
+                intersectionMap = new Map();
+                const coordToString = (v) => `${v.x.toFixed(1)},${v.z.toFixed(1)}`;
+
+                const addStreet = (start, end) => {
+                    const street = { start, end, id: streets.length, length: start.distanceTo(end) };
+                    streets.push(street);
+
+                    const startStr = coordToString(start);
+                    const endStr = coordToString(end);
+
+                    if (!intersectionMap.has(startStr)) intersectionMap.set(startStr, []);
+                    if (!intersectionMap.has(endStr)) intersectionMap.set(endStr, []);
+
+                    intersectionMap.get(startStr).push(street);
+                    intersectionMap.get(endStr).push(street);
+                    
+                    const pointsCount = Math.floor(street.length / 0.2);
+                    for (let i = 0; i < pointsCount; i++) {
+                        streetPoints.push(new THREE.Vector3().lerpVectors(start, end, i / pointsCount));
+                    }
+                };
+
+                const generateSegment = (start, angle, length, depth) => {
+                    if (depth > 8 || length < 1) return;
+                    
+                    const end = new THREE.Vector3(
+                        start.x + Math.cos(angle) * length,
+                        start.y,
+                        start.z + Math.sin(angle) * length
+                    );
+
+                    if (Math.abs(end.x) > 49 || Math.abs(end.z) > 49) return;
+                    
+                    addStreet(start, end);
+
+                    const dist = start.length();
+                    const isDowntown = dist < 15;
+
+                    const branchProb = isDowntown ? 0.9 : 0.3;
+                    const turnAngle = (Math.random() * 0.6 + 0.7) * Math.PI / 2; // sharper turns downtown
+                    const lengthMultiplier = isDowntown ? (Math.random() * 0.2 + 0.4) : (Math.random() * 0.2 + 0.8);
+
+                    if (Math.random() < branchProb) {
+                        generateSegment(end, angle + turnAngle, length * lengthMultiplier, depth + 1);
+                    }
+                    if (Math.random() < branchProb) {
+                        generateSegment(end, angle - turnAngle, length * lengthMultiplier, depth + 1);
+                    }
+                };
+                for(let i = 0; i < 16; i++){
+                    generateSegment(new THREE.Vector3(0, 0.01, 0), Math.random() * Math.PI * 2, 20, 0);
+                }
+                // Add sparse roads on the outskirts
+                for(let i = 0; i < 4; i++){
+                    const angle = Math.random() * Math.PI * 2;
+                    const radius = 30 + Math.random() * 15; // Start roads far from the center
+                    const startPoint = new THREE.Vector3(Math.cos(angle) * radius, 0.01, Math.sin(angle) * radius);
+                    generateSegment(startPoint, Math.random() * Math.PI * 2, 10, 4); // Start with a higher depth to limit branching
                 }
                 
-                colors[i] = color.r;
-                colors[i+1] = color.g;
-                colors[i+2] = color.b;
+                const geometry = new THREE.BufferGeometry().setFromPoints(streetPoints);
+                streetGroup.add(new THREE.Points(geometry, streetParticleMaterial));
+            };
+
+            generateStreets();
+            world.add(streetGroup);
+            
+            // City Particles
+            const cityParticles = new THREE.Group();
+            const particleMaterial = new THREE.PointsMaterial({ size: 0.05, vertexColors: true });
+
+            const createBuilding = (width, height, depth, particleCount) => {
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+                const colors = new Float32Array(particleCount * 3);
+                const color = new THREE.Color();
+
+                for (let i = 0; i < positions.length; i += 3) {
+                    const side = Math.floor(Math.random() * 6);
+                    let x, y, z;
+
+                    if (side === 0 || side === 1) { x = (side === 0 ? -width : width) / 2; y = (Math.random() - 0.5) * height; z = (Math.random() - 0.5) * depth; } 
+                    else if (side === 2 || side === 3) { x = (Math.random() - 0.5) * width; y = (side === 2 ? -height : height) / 2; z = (Math.random() - 0.5) * depth; } 
+                    else { x = (Math.random() - 0.5) * width; y = (Math.random() - 0.5) * height; z = (side === 4 ? -depth : depth) / 2; }
+
+                    positions[i] = x; positions[i+1] = y; positions[i+2] = z;
+                    
+                    if (Math.random() > 0.95) color.set(0x99ccff); 
+                    else { const intensity = Math.random() * 0.5 + 0.5; color.setRGB(intensity, intensity, intensity); }
+                    
+                    colors[i] = color.r; colors[i+1] = color.g; colors[i+2] = color.b;
+                }
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                return new THREE.Points(geometry, particleMaterial);
+            };
+
+            for (let i = 0; i < 100; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const radius = Math.pow(Math.random(), 0.9) * 48; // Power < 1 biases towards the edge
+                const x = Math.cos(angle) * radius;
+                const z = Math.sin(angle) * radius;
+
+                const dist = Math.sqrt(x*x + z*z);
+                const downtownFactor = Math.pow(1 - Math.min(dist / 48, 1), 1.5);
+
+                // Smoothly interpolate building height
+                const h_min = 1 + 9 * downtownFactor;
+                const h_max = 5 + 20 * downtownFactor;
+                const height = h_min + Math.random() * (h_max - h_min);
+
+                // Smoothly interpolate building width and depth
+                const w_min = 0.5 + 0.5 * downtownFactor;
+                const w_max = 2 + 1.5 * downtownFactor;
+                const width = w_min + Math.random() * (w_max - w_min);
+                const depth = w_min + Math.random() * (w_max - w_min);
+
+                // Smoothly interpolate particle density
+                const particleDensity = 40 + 20 * downtownFactor;
+                const particleCount = Math.floor(width * height * depth * particleDensity);
+
+                if (particleCount > 0) {
+                    const building = createBuilding(width, height, depth, particleCount);
+                    building.position.set(x, height / 2, z);
+                    cityParticles.add(building);
+                }
+            }
+            world.add(cityParticles);
+
+            // Trees
+            const treeParticles = new THREE.Group();
+            const treeParticleMaterial = new THREE.PointsMaterial({ size: 0.1, color: 0x4caf50 });
+
+            for (let i = 0; i < 200; i++) {
+                const treeGeometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(30 * 3);
+                for (let j = 0; j < positions.length; j += 3) {
+                    positions[j] = (Math.random() - 0.5) * 0.5;
+                    positions[j+1] = Math.random() * 1;
+                    positions[j+2] = (Math.random() - 0.5) * 0.5;
+                }
+                treeGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const tree = new THREE.Points(treeGeometry, treeParticleMaterial);
+                
+                const x = (Math.random() - 0.5) * 90;
+                const z = (Math.random() - 0.5) * 90;
+                
+                tree.position.set(x, 0, z);
+                treeParticles.add(tree);
+            }
+            world.add(treeParticles);
+
+            // Cars
+            const createCar = () => {
+                if (streets.length === 0) return;
+                const carGeometry = new THREE.BufferGeometry();
+                carGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([0,0,0]), 3));
+                const carMaterial = new THREE.PointsMaterial({ size: 0.2, color: 0xffffff });
+                const car = new THREE.Points(carGeometry, carMaterial);
+                
+                const street = streets[Math.floor(Math.random() * streets.length)];
+                const speed = Math.random() * 0.05 + 0.05;
+
+                const fromStart = Math.random() > 0.5;
+                const startNode = fromStart ? street.start : street.end;
+                const endNode = fromStart ? street.end : street.start;
+
+                car.position.copy(startNode);
+                world.add(car);
+                cars.push({ mesh: car, speed, street, progress: 0, startNode, endNode });
+            };
+            for (let i = 0; i < 150; i++) {
+                createCar();
             }
 
-            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-            const material = new THREE.PointsMaterial({ size: 0.05, vertexColors: true });
-            particleSystem = new THREE.Points(geometry, material);
-            scene.add(particleSystem);
-
-
-            camera.position.z = 5;
+            camera.position.set(0, 35, 45);
+            camera.lookAt(0, 0, 0);
 
             controls = new OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
             controls.dampingFactor = 0.05;
-            controls.enableZoom = false;
-            controls.enablePan = false;
+            controls.enableZoom = true;
+            controls.enablePan = true;
+            controls.maxPolarAngle = Math.PI / 2;
 
             window.addEventListener('scroll', onScroll, false);
+            window.addEventListener('wheel', onWheel, { passive: true });
             window.addEventListener('resize', onWindowResize, false);
 
             animate();
@@ -196,9 +405,16 @@
         }
 
         function onScroll() {
-            const scrollY = window.scrollY;
-            camera.position.z = 5 + scrollY * 0.01;
-            particleSystem.rotation.y = scrollY * 0.001;
+            const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = window.scrollY / scrollMax;
+            const startY = 35;
+            const endY = 5;
+            camera.position.y = startY - scrollPercent * (startY - endY);
+            camera.lookAt(0, 0, 0);
+        }
+
+        function onWheel(event) {
+            world.rotation.y += event.deltaX * 0.001;
         }
 
         function onWindowResize() {
@@ -209,7 +425,41 @@
 
         function animate() {
             requestAnimationFrame(animate);
-            particleSystem.rotation.y += 0.0005;
+            world.rotation.y += 0.0002;
+
+            const coordToString = (v) => `${v.x.toFixed(1)},${v.z.toFixed(1)}`;
+
+            cars.forEach(car => {
+                car.progress += car.speed / car.street.length;
+                
+                if (car.progress >= 1) {
+                    const currentEndStr = coordToString(car.endNode);
+                    const possibleNextStreets = (intersectionMap.get(currentEndStr) || []).filter(s => s.id !== car.street.id);
+
+                    let nextStreet;
+                    if (possibleNextStreets.length > 0) {
+                        nextStreet = possibleNextStreets[Math.floor(Math.random() * possibleNextStreets.length)];
+                    } else {
+                        nextStreet = car.street; // Turn around if it's a dead end
+                    }
+
+                    car.street = nextStreet;
+                    car.progress = 0;
+                    
+                    if (car.endNode.distanceTo(nextStreet.start) < 0.1) {
+                        car.startNode = nextStreet.start;
+                        car.endNode = nextStreet.end;
+                    } else {
+                        car.startNode = nextStreet.end;
+                        car.endNode = nextStreet.start;
+                    }
+                }
+                
+                if (car.street) {
+                    car.mesh.position.lerpVectors(car.startNode, car.endNode, car.progress);
+                }
+            });
+
             controls.update();
             renderer.render(scene, camera);
         }
@@ -230,6 +480,21 @@
         }
 
         init();
+        
+        document.addEventListener("DOMContentLoaded", function(event) {
+            document.body.style.opacity = 1;
+            document.querySelector('.cta-button').addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateToStory();
+            });
+        });
+
+        function navigateToStory() {
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = 'story/index.html';
+            }, 500);
+        }
     </script>
 </body>
 </html>
