@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ones Who Walk Away from Omelas</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            margin: 0;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        #scene-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            font-weight: 300;
+            text-align: center;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            background-color: rgba(26, 26, 26, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        header {
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            border: 1px solid #99ccff;
+            border-radius: 4px;
+            color: #99ccff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #99ccff;
+            color: #1a1a1a;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div id="scene-container"></div>
+    <div class="content">
+        <header>
+            <h1>The Ones Who Walk Away from Omelas</h1>
+            <a href="story/index.html" class="cta-button">Experience the Interactive Story</a>
+        </header>
+        <section class="section" id="plot">
+            <h2>The Plot</h2>
+            <p>The story opens with a vivid description of the city of Omelas, a utopian paradise where the citizens are intelligent, sophisticated, and compassionate. They live in a state of perpetual happiness, free from suffering, war, or guilt. The city is celebrating its summer festival, a joyous occasion with music, dancing, and a race of young people on horseback.</p>
+            <p>However, the narrator reveals a dark secret that underpins this perfect society. The happiness of Omelas is contingent upon the perpetual misery of a single child, who is locked away in a dark, squalid room, living in a state of constant fear, neglect, and suffering. All citizens of Omelas, upon reaching a certain age, are made aware of the child's existence and the terrible bargain that sustains their happiness.</p>
+        </section>
+        <section class="section" id="themes">
+            <h2>The Themes</h2>
+            <p>The story explores several profound philosophical themes, most notably the conflict between utilitarianism and individual rights. It questions whether the happiness of the many can justify the suffering of the few, forcing the reader to confront uncomfortable questions about morality, justice, and the nature of happiness itself.</p>
+            <p>Another central theme is the idea of a scapegoat, a single individual who is made to bear the sins and suffering of the entire community. The child in the story serves as a symbol of the oppressed and marginalized, those who are sacrificed for the sake of the greater good.</p>
+        </section>
+        <section class="section" id="messages">
+            <h2>The Messages</h2>
+            <p>The story's most powerful message is delivered through the actions of those who choose to walk away from Omelas. Unable to reconcile themselves with the injustice that underpins their society, they silently leave the city, venturing into an unknown and uncertain future. Their departure is a powerful act of defiance, a rejection of a flawed utopia and a testament to the human capacity for empathy and moral courage.</p>
+            <p>Ultimately, "The Ones Who Walk Away from Omelas" is a story that challenges our own moral certainties and forces us to consider the hidden costs of our own happiness. It reminds us that true utopia cannot be built on a foundation of suffering and that sometimes, the most ethical choice is to walk away from a system that is fundamentally unjust.</p>
+        </section>
+        <footer>
+            <p>A web experience based on the short story by Ursula K. Le Guin.</p>
+        </footer>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        let scene, camera, renderer, controls, particleSystem;
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('scene-container').appendChild(renderer.domElement);
+
+            // Particles
+            const particles = 20000;
+            const geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(particles * 3);
+            const colors = new Float32Array(particles * 3);
+
+            const color = new THREE.Color();
+
+            for (let i = 0; i < positions.length; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 15;
+                positions[i+1] = (Math.random() - 0.5) * 15;
+                positions[i+2] = (Math.random() - 0.5) * 15;
+
+                const randomValue = Math.random();
+                if (randomValue > 0.95) { 
+                    color.set(0x99ccff); 
+                } else { 
+                    const intensity = Math.random() * 0.5 + 0.5;
+                    color.setRGB(intensity, intensity, intensity);
+                }
+                
+                colors[i] = color.r;
+                colors[i+1] = color.g;
+                colors[i+2] = color.b;
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({ size: 0.05, vertexColors: true });
+            particleSystem = new THREE.Points(geometry, material);
+            scene.add(particleSystem);
+
+
+            camera.position.z = 5;
+
+            controls = new OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.enableZoom = false;
+            controls.enablePan = false;
+
+            window.addEventListener('scroll', onScroll, false);
+            window.addEventListener('resize', onWindowResize, false);
+
+            animate();
+            revealSections();
+        }
+
+        function onScroll() {
+            const scrollY = window.scrollY;
+            camera.position.z = 5 + scrollY * 0.01;
+            particleSystem.rotation.y = scrollY * 0.001;
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particleSystem.rotation.y += 0.0005;
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        function revealSections() {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        init();
+    </script>
+</body>
+</html>

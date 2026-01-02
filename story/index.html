@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ones Who Walk Away From Omelas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .pulse-icon {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="transition-colors duration-500">
+    <div id="app" class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+        <!-- Content will be injected here by JavaScript -->
+    </div>
+
+    <script>
+        // State management
+        let state = {
+            currentSlide: 'intro',
+            character: null
+        };
+
+        const slides = {
+            intro: {
+                title: "THE ONES WHO WALK AWAY FROM OMELAS",
+                subtitle: "An Interactive Study in Happiness and Cost",
+                mood: 'light',
+                render: () => `
+                    <div class="space-y-6 text-center fade-in">
+                        <div class="flex justify-center">
+                            <svg class="w-16 h-16 text-amber-500 pulse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <p class="text-lg italic text-slate-600">
+                            "With a clamor of bells that set the swallows soaring, the Festival of Summer came to the city Omelas, bright-towered by the sea."
+                        </p>
+                        <p class="max-w-md mx-auto text-slate-600">
+                            Welcome to the Utopia. In this story, you are not just a reader. You are a citizen. Your choices determine the fate of the city.
+                        </p>
+                        <button onclick="navigate('character_select')" class="px-8 py-3 bg-teal-600 text-white rounded-full hover:bg-teal-700 transition flex items-center mx-auto gap-2 shadow-lg">
+                            Enter the City
+                        </button>
+                    </div>
+                `
+            },
+            character_select: {
+                title: "CHOOSE YOUR PERSPECTIVE",
+                subtitle: "Who are you in this city of joy?",
+                mood: 'light',
+                render: () => `
+                    <div class="grid md:grid-cols-3 gap-4 mt-8 fade-in">
+                        <button onclick="selectCharacter('elara')" class="p-6 bg-white border-2 border-amber-200 rounded-xl hover:border-amber-500 hover:shadow-xl transition text-left group">
+                            <h3 class="font-bold text-lg mb-2 text-slate-800">Elara, The Architect</h3>
+                            <p class="text-sm text-slate-500">Rational. Pragmatic. You designed the fountains. You believe in the greater good.</p>
+                        </button>
+                        <button onclick="selectCharacter('kael')" class="p-6 bg-white border-2 border-teal-200 rounded-xl hover:border-teal-500 hover:shadow-xl transition text-left group">
+                            <h3 class="font-bold text-lg mb-2 text-slate-800">Kael, The Musician</h3>
+                            <p class="text-sm text-slate-500">Sensitive. Emotional. You play the flute in the procession. You feel the world deeply.</p>
+                        </button>
+                        <button onclick="selectCharacter('jory')" class="p-6 bg-white border-2 border-rose-200 rounded-xl hover:border-rose-500 hover:shadow-xl transition text-left group">
+                            <h3 class="font-bold text-lg mb-2 text-slate-800">Jory, The Guard</h3>
+                            <p class="text-sm text-slate-500">Protective. Action-oriented. You stand watch at the city gates. You believe in justice.</p>
+                        </button>
+                    </div>
+                `
+            },
+            elara_start: {
+                title: "THE FESTIVAL OF SUMMER",
+                subtitle: "Elara's Perspective",
+                mood: 'light',
+                render: () => `
+                    <div class="space-y-4 fade-in">
+                        <p>The city is a masterpiece of logic and beauty. As you walk through the Green Fields, you see the result of your planning: thousands of happy people. No hunger. No war.</p>
+                        <div class="p-4 bg-amber-50 border-l-4 border-amber-400">
+                            <p class="font-semibold text-amber-900">Elara's thought:</p>
+                            <p class="italic text-amber-800">"Happiness is based on a just discrimination of what is necessary. This society works perfectly."</p>
+                        </div>
+                        <p>But today is your Coming of Age day. You must see the foundation upon which this architecture rests.</p>
+                        <button onclick="navigate('the_room')" class="w-full mt-4 bg-slate-800 text-white p-3 rounded-lg hover:bg-slate-700 transition">Visit the Foundation</button>
+                    </div>
+                `
+            },
+            kael_start: {
+                title: "THE FESTIVAL OF SUMMER",
+                subtitle: "Kael's Perspective",
+                mood: 'light',
+                render: () => `
+                    <div class="space-y-4 fade-in">
+                        <p>The music is so sweet today it brings tears to your eyes. Children are dancing, naked and free in the summer air. The joy feels almost too intense.</p>
+                        <div class="p-4 bg-teal-50 border-l-4 border-teal-400">
+                            <p class="font-semibold text-teal-900">Kael's thought:</p>
+                            <p class="italic text-teal-800">"Can joy this pure truly exist without a shadow? I feel a dissonance somewhere in the melody."</p>
+                        </div>
+                        <p>The elders tell you that to truly understand the music, you must see the silence beneath it.</p>
+                        <button onclick="navigate('the_room')" class="w-full mt-4 bg-slate-800 text-white p-3 rounded-lg hover:bg-slate-700 transition">See the Silence</button>
+                    </div>
+                `
+            },
+            jory_start: {
+                title: "THE FESTIVAL OF SUMMER",
+                subtitle: "Jory's Perspective",
+                mood: 'light',
+                render: () => `
+                    <div class="space-y-4 fade-in">
+                        <p>You stand at the North Gate. You watch the procession. You have trained to defend this. To protect this peace. The city has no army because it needs none.</p>
+                        <div class="p-4 bg-rose-50 border-l-4 border-rose-400">
+                            <p class="font-semibold text-rose-900">Jory's thought:</p>
+                            <p class="italic text-rose-800">"I would die for this city. I would kill to keep these children safe."</p>
+                        </div>
+                        <p>But today, you are told that the safety of the city is not secured by swords, but by a secret.</p>
+                        <button onclick="navigate('the_room')" class="w-full mt-4 bg-slate-800 text-white p-3 rounded-lg hover:bg-slate-700 transition">Learn the Secret</button>
+                    </div>
+                `
+            },
+            the_room: {
+                title: "THE ROOM",
+                subtitle: "The Truth of Omelas",
+                mood: 'dark',
+                render: () => `
+                    <div class="space-y-6 fade-in text-slate-200">
+                        <p>You are taken to a basement under one of the beautiful public buildings. The room is about three paces long and two wide. No window.</p>
+                        <p class="text-red-400 font-medium">In the corner sits a child. It is feeble-minded. It sits in its own filth. It is about ten, but looks six.</p>
+                        <p class="italic text-slate-400">"I will be good," it says. "Please let me out. I will be good!"</p>
+                        <div class="border-t border-slate-700 pt-4">
+                            <p class="font-bold text-xl mb-2 text-amber-400 uppercase">The Terms</p>
+                            <p class="text-sm mb-6">If the child were brought up into the sunlight, cleaned and fed... in that hour all the prosperity of Omelas would wither and be destroyed.</p>
+                            <div class="grid gap-3">
+                                <button onclick="navigate('ending_stay')" class="p-3 text-left bg-slate-800 hover:bg-slate-700 rounded border border-slate-600 transition">
+                                    <span class="font-bold block">ACCEPT IT.</span>
+                                    <span class="text-xs text-slate-400">The happiness of thousands outweighs the suffering of one.</span>
+                                </button>
+                                <button onclick="navigate('ending_walk')" class="p-3 text-left bg-slate-800 hover:bg-slate-700 rounded border border-slate-600 transition">
+                                    <span class="font-bold block">WALK AWAY.</span>
+                                    <span class="text-xs text-slate-400">Refuse to participate in the bargain. Leave into the unknown.</span>
+                                </button>
+                                <button onclick="navigate('ending_ruin')" class="p-3 text-left bg-rose-900/50 hover:bg-rose-900 rounded border border-rose-800 transition">
+                                    <span class="font-bold block text-rose-300">SAVE THE CHILD.</span>
+                                    <span class="text-xs text-rose-200">Break the covenant. End the suffering, even if Omelas falls.</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            ending_stay: {
+                title: "ENDING: THE CITIZEN",
+                subtitle: "The Utilitarian Choice",
+                mood: 'light',
+                render: () => `
+                    <div class="space-y-6 fade-in text-slate-700">
+                        <p>You leave the room. You weep, at first. But as the weeks pass, you begin to understand the terrible math.</p>
+                        <p>You realize that your happiness is not shallow. It is profound because it is paid for.</p>
+                        <div class="bg-white p-4 rounded-lg shadow-inner border border-amber-100 italic">
+                            "They dry their tears... and the summer morning is very bright."
+                        </div>
+                        <p class="text-sm bg-amber-50 p-3 rounded text-slate-800">
+                            ${state.character === 'elara' ? 'As Elara, you go on to design even more beautiful buildings, ensuring the child\'s sacrifice is never wasted.' : ''}
+                            ${state.character === 'kael' ? 'As Kael, your music becomes hauntingly beautiful, tinged with a sorrow only you understand.' : ''}
+                            ${state.character === 'jory' ? 'As Jory, you stand guard even more vigilantly, protecting the paradise that costs so much.' : ''}
+                        </p>
+                        <button onclick="navigate('analysis')" class="w-full mt-4 bg-teal-600 text-white p-3 rounded-lg hover:bg-teal-700 transition">Analyze This Choice</button>
+                    </div>
+                `
+            },
+            ending_walk: {
+                title: "ENDING: THE EXILE",
+                subtitle: "The Choice to Depart",
+                mood: 'twilight',
+                render: () => `
+                    <div class="space-y-6 fade-in text-indigo-100">
+                        <p>You cannot stay. You cannot enjoy the festival knowing who pays for the wine. But you also know that saving the child would destroy the happiness of everyone else.</p>
+                        <p>So you walk out the gates of Omelas. You pass the beautiful farmlands. You walk into the darkness of the fields.</p>
+                        <div class="bg-indigo-900/50 p-4 rounded-lg shadow-inner border border-indigo-700 italic">
+                            "The place they go towards is a place even less imaginable to most of us than the city of happiness."
+                        </div>
+                        <button onclick="navigate('analysis')" class="w-full mt-4 bg-indigo-500 text-white p-3 rounded-lg hover:bg-indigo-600 transition">Analyze This Choice</button>
+                    </div>
+                `
+            },
+            ending_ruin: {
+                title: "ENDING: THE RUIN",
+                subtitle: "The Choice of Justice",
+                mood: 'ruin',
+                render: () => `
+                    <div class="space-y-6 fade-in text-stone-300">
+                        <p>You kick open the door. You lift the small, shivering child into your arms. You walk out of the basement and into the sunlight.</p>
+                        <p>The world changes instantly. The music stops. The towers of Omelas begin to crumble. Thousands of happy people suddenly feel the weight of a thousand years of misery.</p>
+                        <div class="bg-stone-800 p-4 rounded-lg border border-rose-900 font-bold text-rose-200">
+                            The city is dead. But the child is in the sun.
+                        </div>
+                        <button onclick="navigate('analysis')" class="w-full mt-4 bg-rose-700 text-white p-3 rounded-lg hover:bg-rose-800 transition">Analyze This Choice</button>
+                    </div>
+                `
+            },
+            analysis: {
+                title: "PHILOSOPHICAL REFLECTION",
+                subtitle: "What does Le Guin want us to learn?",
+                mood: 'light',
+                render: () => `
+                    <div class="space-y-4 text-slate-800 fade-in">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-slate-100 rounded-lg">
+                                <h4 class="font-bold text-teal-800 mb-2">Utilitarianism</h4>
+                                <p class="text-sm">The "Stay" choice. Maximizing happiness for the majority. Is it moral if the cost is an innocent life?</p>
+                            </div>
+                            <div class="p-4 bg-slate-100 rounded-lg">
+                                <h4 class="font-bold text-indigo-800 mb-2">Deontology</h4>
+                                <p class="text-sm">The "Walk Away" or "Ruin" choice. Some actions are inherently wrong, regardless of the consequences.</p>
+                            </div>
+                        </div>
+                        <p class="text-center font-semibold mt-4">
+                            Omelas is a mirror. It asks us: <br>
+                            <span class="text-rose-600">"What is the hidden cost of your own comfort?"</span>
+                        </p>
+                        <button onclick="reset()" class="w-full mt-4 bg-slate-800 text-white p-3 rounded-lg hover:bg-slate-700 transition">Restart the Experience</button>
+                    </div>
+                `
+            }
+        };
+
+        function getMoodStyles(mood) {
+            switch (mood) {
+                case 'dark': return 'bg-slate-900 text-slate-100';
+                case 'ruin': return 'bg-stone-900 text-stone-200';
+                case 'twilight': return 'bg-indigo-950 text-indigo-100';
+                default: return 'bg-gradient-to-br from-amber-50 to-teal-50 text-slate-800';
+            }
+        }
+
+        function render() {
+            const slide = slides[state.currentSlide];
+            const app = document.getElementById('app');
+            const body = document.body;
+
+            body.className = `transition-colors duration-500 ${getMoodStyles(slide.mood)}`;
+
+            app.innerHTML = `
+                <div class="max-w-4xl w-full bg-white/5 backdrop-blur-sm p-6 md:p-12 rounded-3xl shadow-2xl border border-white/10">
+                    <div class="mb-8 text-center">
+                        <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-2 uppercase">${slide.title}</h1>
+                        <p class="text-lg opacity-70 italic">${slide.subtitle}</p>
+                    </div>
+                    <div class="min-h-[300px]">
+                        ${slide.render()}
+                    </div>
+                    ${state.currentSlide !== 'intro' && state.currentSlide !== 'character_select' ? `
+                        <div class="mt-8 pt-6 border-t border-white/10 flex justify-between items-center">
+                            <button onclick="reset()" class="text-sm opacity-50 hover:opacity-100 flex items-center gap-1">
+                                Reset Story
+                            </button>
+                            ${state.character ? `<div class="text-sm font-medium opacity-80 px-3 py-1 bg-white/10 rounded-full">Playing as: ${state.character.charAt(0).toUpperCase() + state.character.slice(1)}</div>` : ''}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        function navigate(slideId) {
+            state.currentSlide = slideId;
+            render();
+        }
+
+        function selectCharacter(charId) {
+            state.character = charId;
+            state.currentSlide = charId + '_start';
+            render();
+        }
+
+        function reset() {
+            state.character = null;
+            state.currentSlide = 'intro';
+            render();
+        }
+
+        // Initial render
+        render();
+    </script>
+</body>
+</html>
