@@ -58,15 +58,26 @@
             margin-top: 0;
         }
 
-        p {
+        p,
+        .section-inner ul li {
             font-size: 1.1em;
             line-height: 1.6;
             text-align: justify;
         }
 
-                header,
+        .section-inner ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1em;
+        }
+
+        .section-inner ul li {
+            margin-bottom: 1em;
+        }
+
+        header,
         .section {
-            height: 100vh;
+            min-height: 100vh;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -147,7 +158,7 @@
             margin: 25px auto 0 auto;
         }
 
-                        footer {
+        footer {
             background-color: #333;
             color: #fff;
             text-align: center;
@@ -177,15 +188,29 @@
         .nav-bar a:hover {
             color: #99ccff;
         }
+
+        .section-inner h3 {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: #99ccff;
+            text-align: left;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body>
     <div class="nav-bar">
-        <a href="#plot">The Plot</a>
+                <a href="#plot">The Plot</a>
         <a href="#themes">The Themes</a>
         <a href="#messages">The Messages</a>
         <a href="#guernica">The Painting</a>
+        <a href="#devices">Devices</a>
+        <a href="#context">Context</a>
+                <a href="#reflection">Reflection</a>
+        <a href="#citations">Citations</a>
+        <a href="story/index.html">Interactive Story</a>
     </div>
     <div id="scene-container"></div>
     <div class="content">
@@ -215,7 +240,7 @@
         <section class="section" id="plot">
             <div class="section-inner">
                 <h2>The Plot</h2>
-                <p>The town of Omelas is a place of unending joy. It has summer festivities, laughter, song, and plenty.
+                                <p>The town of Omelas is a place of unending joy. It has summer festivities, laughter, song, and plenty.
                     The streets are filled with children dancing, the riders warming up for a race, and even the very
                     air is thick with joy. But this place of joy holds a ghastly secret. Down below this utopian town
                     lies a dirty basement where a child is kept. The child is feeble-minded, starving, and covered with
@@ -224,6 +249,14 @@
                     child. Should the child suddenly be set free, the town will fall apart. Many people are willing to
                     live under this cruel condition. However, there are some who choose to walk out on it and leave the
                     town with unknown consequences.</p>
+                <h3>Key Points</h3>
+                <ul>
+                    <li>Utopia vs. Dystopia: Omelas appears perfect, but its “perfection” is built on exploitation.</li>
+                    <li>The Sacrifice: The child represents the invisible victims of systems that prioritize collective
+                        comfort over individual dignity.</li>
+                    <li>Moral Choice: Citizens must choose between complicity (accepting the child’s suffering) or exile
+                        (rejecting the system, even if it means losing everything).</li>
+                </ul>
                 <a href="story/text.html" class="cta-button">Read Full Text & Analysis</a>
             </div>
         </section>
@@ -257,17 +290,109 @@
         <section class="section" id="guernica">
             <div class="section-inner">
                 <h2>The Painting: Guernica (1937)</h2>
-                <p>Pablo Picasso's monumental anti-war mural, *Guernica*, serves as a powerful visual counterpart to
+                <p>Guernica, produced in 1937, represents Picasso's reaction to the bombing of the Spanish town of
+                    Guernica by the Nazis in the Spanish Civil War. The bombing, which was intended to terrify the
+                    civilians, resulted in the deaths of hundreds of people and the destruction of the town. Picasso's
+                    work, which measures 3.5m x 7.8m, was a way of protesting violence, fascism, and the dehumanization
+                    of innocent civilians. Pablo Picasso's monumental anti-war mural, Guernica, serves as a powerful
+                    visual counterpart to
                     Omelas. Painted in response to the bombing of a Basque village during the Spanish Civil War, it
                     depicts the raw, fragmented agony of innocent victims. While Omelas hides its suffering in a dark
                     cellar, Guernica screams it aloud in stark monochrome, forcing the viewer to confront the brutal
                     reality of violence. Both works, however, explore the same theme: the suffering of the few for the
                     supposed benefit of the many.</p>
+                <img src="painting/painting.jpg" alt="Guernica"
+                    style="max-width: 100%; border-radius: 8px; margin-top: 20px;">
                 <a href="painting/index.html" class="cta-button">Explore the Connection</a>
             </div>
         </section>
+        <section class="section" id="devices">
+            <div class="section-inner">
+                <h2>Literary & Artistic Devices</h2>
+
+                <h3>Le Guin’s Literary Devices (from Omelas)</h3>
+                <ul>
+                    <li><strong>Contrast:</strong> The vivid, joyful descriptions of Omelas (”bells that set the
+                        swallows soaring,” “naked children exercising horses”) contrast sharply with the child’s dark,
+                        filthy cellar. This contrast highlights the hypocrisy of the utopia.</li>
+                    <li><strong>Symbolism:</strong> The child symbolizes all marginalized groups—those exploited for the
+                        benefit of the majority (e.g., workers in sweatshops, refugees, victims of war).</li>
+                    <li><strong>Paradox:</strong> Omelas is a “utopia” built on dystopian suffering. This paradox forces
+                        readers to question what “happiness” truly means if it requires the misery of others.</li>
+                </ul>
+                <a href="story/text.html" class="cta-button">Read Full Text & Analysis</a>
+
+                <h3>Picasso’s Artistic Devices (in Guernica)</h3>
+                <ul>
+                    <li><strong>Distortion:</strong> Figures are twisted and fragmented—reflecting the physical and
+                        psychological destruction of war. A mother’s face is contorted in a scream; a horse’s body is
+                        broken—showing how violence dehumanizes both victims and society.</li>
+                    <li><strong>Juxtaposition:</strong> The painting’s chaotic composition (figures overlapping, no
+                        clear “center”) mirrors the chaos of war. There is no hero, no “winner”—only suffering,
+                        emphasizing that violence leaves no one unscathed.</li>
+                    <li><strong>Symbolism:</strong> The bull (a symbol of Spanish identity) stands impassive amid the
+                        carnage—representing indifference to suffering. The mother clutching her dead child echoes the
+                        grief of all those who lose loved ones to violence.</li>
+                </ul>
+            </div>
+        </section>
+        <section class="section" id="context">
+            <div class="section-inner">
+                <h2>Broader Context</h2>
+                <h3>Thematic Relevance</h3>
+                <p>Both Omelas and Guernica speak to timeless issues:</p>
+                <ul>
+                    <li><strong>Systemic Injustice:</strong> From global inequality to police brutality, societies often
+                        sacrifice marginalized groups for the benefit of the powerful.</li>
+                    <li><strong>Complicity:</strong> It’s easy to ignore suffering when it doesn’t affect us. Both works
+                        challenge us to ask: What “children” are we ignoring today?</li>
+                    <li><strong>Resistance:</strong> The “ones who walk away” and Picasso’s painting remind us that
+                        resistance—even small acts of rejection—matters. We don’t have to accept unjust systems.</li>
+                </ul>
+
+                <h3>Textual Evidence from Omelas</h3>
+                <ul>
+                    <li>“They all know that it has to be there. Some of them understand why, and some do not, but they
+                        all understand that their happiness… depend wholly on this child’s abominable misery.” (Shows
+                        complicity in systemic injustice)</li>
+                    <li>“The ones who walk away from Omelas… walk straight out of the city… towards the mountains. They
+                        do not come back.” (Shows resistance to complicity)</li>
+                </ul>
+
+                <h3>Artistic Evidence from Guernica</h3>
+                <ul>
+                    <li><strong>The screaming mother and dead child:</strong> A universal symbol of grief and the loss
+                        of innocence in war.</li>
+                    <li><strong>The broken sword:</strong> Represents the failure of humanity to protect the vulnerable.
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="section" id="reflection">
+            <div class="section-inner">
+                <h2>Reflection</h2>
+                <h3>What Do You Choose?</h3>
+                <p>Le Guin and Picasso do not provide us with answers. They encourage us to take a look at ourselves
+                    within systems of injustice. Are we the people from Omelas, sitting in comfort and disregarding the
+                    pain that is a part of our existence? Or are we the ones who walk away, ready to take a different
+                    path even if it is not the clearer one in front of us?</p>
+                <p>“Guernica” and Omelas call to mind the reality that happiness without justice is no happiness at all.
+                    It is a lie. The only way to make a better world for ourselves and for others is to confront this
+                    lie and take action.</p>
+            </div>
+        </section>
+        <section class="section" id="citations">
+            <div class="section-inner">
+                <h2>Citations</h2>
+                <ul>
+                    <li>Le Guin, Ursula K. "The Ones Who Walk Away from Omelas." <i>The Wind’s Twelve Quarters</i>,
+                        1975.</li>
+                    <li>Picasso, Pablo. <i>Guernica</i>. 1937, Museo Reina Sofía, Madrid.</li>
+                </ul>
+            </div>
+        </section>
     </div>
-            <footer>
+    <footer>
         A web experience based on the short story by Ursula K. Le Guin. Pablo Picasso’s Guernica (1937)
     </footer>
 
