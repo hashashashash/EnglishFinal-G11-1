@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guernica - A Visual Counterpart</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            margin: 0;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('path/to/your/background-image.jpg');
+            /* Replace with a suitable background image */
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px);
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(26, 26, 26, 0.7);
+            border-radius: 8px;
+            flex: 1;
+        }
+
+        .split-layout {
+            display: block;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .painting-container {
+            flex: 1;
+        }
+
+        .painting-container img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .text-container {
+            flex: 1;
+        }
+
+        h1 {
+            font-weight: 300;
+            text-align: center;
+            color: #fff;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .nav-back {
+            display: inline-block;
+            padding: 12px 24px;
+            border: 1px solid #99ccff;
+            border-radius: 4px;
+            color: #99ccff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-back:hover {
+            background-color: #99ccff;
+            color: #1a1a1a;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="content">
+        <a href="../index.html" class="nav-back">Back to Main Page</a>
+        <h1>Guernica (1937) - Pablo Picasso</h1>
+        <div class="split-layout">
+            <div class="painting-container">
+                <img src="painting.jpg" alt="Pablo Picasso's Guernica">
+            </div>
+            <div class="text-container">
+                <p>
+                    Ursula K. Le Guin's "The Ones Who Walk Away from Omelas" and Pablo Picasso's "Guernica" are bitter
+                    commentaries on the hidden violence of “order” as both artworks starkly illustrate how societies
+                    regularly condemn the vulnerable for the greater good of their own social order—Omelas's utopian
+                    happiness is entirely maintained by the unseen torture of a suffering child locked deep in the
+                    cellar, while Guernica's tumultuous black-and-white composition commemorates the slaughtered
+                    innocents of a Basque town who died to pave the way for fascist regimes—but both artworks present a
+                    scathing indictment of humanity for ignoring such suffering as necessary by using the few characters
+                    in Le Guin's work that reject Omelas's social contract by walking away from it through Picasso's
+                    artwork as a manifestation of collective grief for suffering suppressed by society as seen in
+                    Guernica's intertextual representation of 'stifled pain' or grief.
+                </p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        A web experience based on the short story by Ursula K. Le Guin. Pablo Picasso’s Guernica (1937)
+    </footer>
+</body>
+</html>

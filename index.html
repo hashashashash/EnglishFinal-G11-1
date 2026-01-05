@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,9 @@
             opacity: 0;
             transition: opacity 0.5s;
             scroll-snap-type: y mandatory;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .fade-out {
@@ -32,9 +36,11 @@
         .content {
             position: relative;
             z-index: 1;
+            flex: 1;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             font-weight: 300;
             text-align: center;
             color: #fff;
@@ -57,8 +63,9 @@
             line-height: 1.6;
             text-align: justify;
         }
-        
-        header, .section, footer {
+
+                header,
+        .section {
             height: 100vh;
             box-sizing: border-box;
             display: flex;
@@ -108,9 +115,44 @@
             background-color: #99ccff;
             color: #1a1a1a;
         }
-        
-                footer {
-            color: #888;
+
+        .intro-paragraph {
+            font-size: 1.1em;
+            line-height: 1.6;
+            text-align: center;
+            font-style: italic;
+            color: #cccccc;
+            max-width: 700px;
+            margin: 0 auto;
+            /* Removed top margin */
+        }
+
+        .intro-text-wrapper {
+            background-color: rgba(26, 26, 26, 0.7);
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .core-question {
+            font-size: 1.15em;
+            line-height: 1.6;
+            text-align: center;
+            font-weight: bold;
+            color: #99ccff;
+            max-width: 700px;
+            margin: 25px auto 0 auto;
+        }
+
+                        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
         }
 
         .nav-bar {
@@ -137,17 +179,35 @@
         }
     </style>
 </head>
+
 <body>
     <div class="nav-bar">
         <a href="#plot">The Plot</a>
         <a href="#themes">The Themes</a>
         <a href="#messages">The Messages</a>
+        <a href="#guernica">The Painting</a>
     </div>
     <div id="scene-container"></div>
     <div class="content">
         <header>
             <div class="section-inner">
-                                <h1>The Ones Who Walk Away from Omelas</h1>
+                <h1>The Ones Who Walk Away from Omelas</h1>
+                <div class="intro-text-wrapper">
+                    <p class="intro-paragraph">
+                        Step into the intersection of literature and art, where Ursula K. Le Guin’s haunting 1973 short
+                        story The Ones Who Walk Away from Omelas meets Pablo Picasso’s iconic 1937 painting Guernica.
+                        Both works confront humanity with a searing truth: joy, peace, and progress often come at the
+                        cost of unspeakable suffering. This website explores how two creative giants—separated by
+                        medium, culture, and context—illuminate the same dark underbelly of civilization: the sacrifice
+                        of the vulnerable for the comfort of the many.
+                    </p>
+                    <p class="core-question">
+                        <strong>Core Question:</strong> What happens when a society’s happiness is built on the misery
+                        of one? How do we respond to injustice that feels “unavoidable”? Le Guin and Picasso force us to
+                        confront these questions, challenging us to reject complacency and confront the hidden violence
+                        of “utopia.”
+                    </p>
+                </div>
                 <a href="story/index.html" class="cta-button">Experience the Interactive Story</a>
                 <a href="story/text.html" class="cta-button">Read the Original Text</a>
             </div>
@@ -155,31 +215,61 @@
         <section class="section" id="plot">
             <div class="section-inner">
                 <h2>The Plot</h2>
-                <p>The story opens with a vivid description of the city of Omelas, a utopian paradise where the citizens are intelligent, sophisticated, and compassionate. They live in a state of perpetual happiness, free from suffering, war, or guilt. The city is celebrating its summer festival, a joyous occasion with music, dancing, and a race of young people on horseback.</p>
-                <p>However, the narrator reveals a dark secret that underpins this perfect society. The happiness of Omelas is contingent upon the perpetual misery of a single child, who is locked away in a dark, squalid room, living in a state of constant fear, neglect, and suffering. All citizens of Omelas, upon reaching a certain age, are made aware of the child's existence and the terrible bargain that sustains their happiness.</p>
+                <p>The town of Omelas is a place of unending joy. It has summer festivities, laughter, song, and plenty.
+                    The streets are filled with children dancing, the riders warming up for a race, and even the very
+                    air is thick with joy. But this place of joy holds a ghastly secret. Down below this utopian town
+                    lies a dirty basement where a child is kept. The child is feeble-minded, starving, and covered with
+                    sores. This child is being neglected and abused. Yet every person living in Omelas understands that
+                    this child is being held down there. Moreover, their own joy is made possible by the misery of this
+                    child. Should the child suddenly be set free, the town will fall apart. Many people are willing to
+                    live under this cruel condition. However, there are some who choose to walk out on it and leave the
+                    town with unknown consequences.</p>
+                <a href="story/text.html" class="cta-button">Read Full Text & Analysis</a>
             </div>
         </section>
         <section class="section" id="themes">
             <div class="section-inner">
                 <h2>The Themes</h2>
-                <p>The story explores several profound philosophical themes, most notably the conflict between utilitarianism and individual rights. It questions whether the happiness of the many can justify the suffering of the few, forcing the reader to confront uncomfortable questions about morality, justice, and the nature of happiness itself.</p>
-                <p>Another central theme is the idea of a scapegoat, a single individual who is made to bear the sins and suffering of the entire community. The child in the story serves as a symbol of the oppressed and marginalized, those who are sacrificed for the sake of the greater good.</p>
+                <p>The story explores several profound philosophical themes, most notably the conflict between
+                    utilitarianism and individual rights. It questions whether the happiness of the many can justify the
+                    suffering of the few, forcing the reader to confront uncomfortable questions about morality,
+                    justice, and the nature of happiness itself.</p>
+                <p>Another central theme is the idea of a scapegoat, a single individual who is made to bear the sins
+                    and suffering of the entire community. The child in the story serves as a symbol of the oppressed
+                    and marginalized, those who are sacrificed for the sake of the greater good.</p>
                 <a href="story/themes.html" class="cta-button">Read Full Theme Analysis</a>
             </div>
         </section>
         <section class="section" id="messages">
             <div class="section-inner">
                 <h2>The Messages</h2>
-                <p>The story's most powerful message is delivered through the actions of those who choose to walk away from Omelas. Unable to reconcile themselves with the injustice that underpins their society, they silently leave the city, venturing into an unknown and uncertain future. Their departure is a powerful act of defiance, a rejection of a flawed utopia and a testament to the human capacity for empathy and moral courage.</p>
-                <p>Ultimately, "The Ones Who Walk Away from Omelas" is a story that challenges our own moral certainties and forces us to consider the hidden costs of our own happiness. It reminds us that true utopia cannot be built on a foundation of suffering and that sometimes, the most ethical choice is to walk away from a system that is fundamentally unjust.</p>
+                <p>The story's most powerful message is delivered through the actions of those who choose to walk away
+                    from Omelas. Unable to reconcile themselves with the injustice that underpins their society, they
+                    silently leave the city, venturing into an unknown and uncertain future. Their departure is a
+                    powerful act of defiance, a rejection of a flawed utopia and a testament to the human capacity for
+                    empathy and moral courage.</p>
+                <p>Ultimately, "The Ones Who Walk Away from Omelas" is a story that challenges our own moral certainties
+                    and forces us to consider the hidden costs of our own happiness. It reminds us that true utopia
+                    cannot be built on a foundation of suffering and that sometimes, the most ethical choice is to walk
+                    away from a system that is fundamentally unjust.</p>
             </div>
         </section>
-        <footer>
+        <section class="section" id="guernica">
             <div class="section-inner">
-                <p>A web experience based on the short story by Ursula K. Le Guin.</p>
+                <h2>The Painting: Guernica (1937)</h2>
+                <p>Pablo Picasso's monumental anti-war mural, *Guernica*, serves as a powerful visual counterpart to
+                    Omelas. Painted in response to the bombing of a Basque village during the Spanish Civil War, it
+                    depicts the raw, fragmented agony of innocent victims. While Omelas hides its suffering in a dark
+                    cellar, Guernica screams it aloud in stark monochrome, forcing the viewer to confront the brutal
+                    reality of violence. Both works, however, explore the same theme: the suffering of the few for the
+                    supposed benefit of the many.</p>
+                <a href="painting/index.html" class="cta-button">Explore the Connection</a>
             </div>
-        </footer>
+        </section>
     </div>
+            <footer>
+        A web experience based on the short story by Ursula K. Le Guin. Pablo Picasso’s Guernica (1937)
+    </footer>
 
     <script type="importmap">
         {
@@ -212,11 +302,11 @@
             const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
             directionalLight.position.set(5, 10, 7.5);
             world.add(directionalLight);
-            
+
             // Ground
             const groundGeometry = new THREE.PlaneGeometry(100, 100);
             const groundMaterial = new THREE.MeshStandardMaterial({ color: 0x0a0a0a, roughness: 0.9, metalness: 0.1, transparent: true });
-            
+
             // Create a blurred edge for the ground
             const canvas = document.createElement('canvas');
             canvas.width = 256;
@@ -238,7 +328,7 @@
             // Streets
             const streetGroup = new THREE.Group();
             const streetParticleMaterial = new THREE.PointsMaterial({ size: 0.03, color: 0x444444 });
-            
+
             const generateStreets = () => {
                 const streetPoints = [];
                 intersectionMap = new Map();
@@ -256,7 +346,7 @@
 
                     intersectionMap.get(startStr).push(street);
                     intersectionMap.get(endStr).push(street);
-                    
+
                     const pointsCount = Math.floor(street.length / 0.2);
                     for (let i = 0; i < pointsCount; i++) {
                         streetPoints.push(new THREE.Vector3().lerpVectors(start, end, i / pointsCount));
@@ -265,7 +355,7 @@
 
                 const generateSegment = (start, angle, length, depth) => {
                     if (depth > 8 || length < 1) return;
-                    
+
                     const end = new THREE.Vector3(
                         start.x + Math.cos(angle) * length,
                         start.y,
@@ -273,7 +363,7 @@
                     );
 
                     if (Math.abs(end.x) > 49 || Math.abs(end.z) > 49) return;
-                    
+
                     addStreet(start, end);
 
                     const dist = start.length();
@@ -290,24 +380,24 @@
                         generateSegment(end, angle - turnAngle, length * lengthMultiplier, depth + 1);
                     }
                 };
-                for(let i = 0; i < 16; i++){
+                for (let i = 0; i < 16; i++) {
                     generateSegment(new THREE.Vector3(0, 0.01, 0), Math.random() * Math.PI * 2, 20, 0);
                 }
                 // Add sparse roads on the outskirts
-                for(let i = 0; i < 4; i++){
+                for (let i = 0; i < 4; i++) {
                     const angle = Math.random() * Math.PI * 2;
                     const radius = 30 + Math.random() * 15; // Start roads far from the center
                     const startPoint = new THREE.Vector3(Math.cos(angle) * radius, 0.01, Math.sin(angle) * radius);
                     generateSegment(startPoint, Math.random() * Math.PI * 2, 10, 4); // Start with a higher depth to limit branching
                 }
-                
+
                 const geometry = new THREE.BufferGeometry().setFromPoints(streetPoints);
                 streetGroup.add(new THREE.Points(geometry, streetParticleMaterial));
             };
 
             generateStreets();
             world.add(streetGroup);
-            
+
             // City Particles
             const cityParticles = new THREE.Group();
             const particleMaterial = new THREE.PointsMaterial({ size: 0.05, vertexColors: true });
@@ -322,29 +412,29 @@
                     const side = Math.floor(Math.random() * 6);
                     let x, y, z;
 
-                    if (side === 0 || side === 1) { x = (side === 0 ? -width : width) / 2; y = (Math.random() - 0.5) * height; z = (Math.random() - 0.5) * depth; } 
-                    else if (side === 2 || side === 3) { x = (Math.random() - 0.5) * width; y = (side === 2 ? -height : height) / 2; z = (Math.random() - 0.5) * depth; } 
+                    if (side === 0 || side === 1) { x = (side === 0 ? -width : width) / 2; y = (Math.random() - 0.5) * height; z = (Math.random() - 0.5) * depth; }
+                    else if (side === 2 || side === 3) { x = (Math.random() - 0.5) * width; y = (side === 2 ? -height : height) / 2; z = (Math.random() - 0.5) * depth; }
                     else { x = (Math.random() - 0.5) * width; y = (Math.random() - 0.5) * height; z = (side === 4 ? -depth : depth) / 2; }
 
-                    positions[i] = x; positions[i+1] = y; positions[i+2] = z;
-                    
-                    if (Math.random() > 0.95) color.set(0x99ccff); 
-                    else { const intensity = Math.random() * 0.5 + 0.5; color.setRGB(intensity, intensity, intensity); }
-                    
-                    colors[i] = color.r; colors[i+1] = color.g; colors[i+2] = color.b;
+                    positions[i] = x; positions[i + 1] = y; positions[i + 2] = z;
+
+                    if (Math.random() > 0.95) color.set(0x99ccff);
+                    else { const intensity = Math.random() * 0.3 + 0.3; color.setRGB(intensity, intensity, intensity); }
+
+                    colors[i] = color.r; colors[i + 1] = color.g; colors[i + 2] = color.b;
                 }
                 geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
                 geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
                 return new THREE.Points(geometry, particleMaterial);
             };
 
-                        for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 100; i++) {
                 const angle = Math.random() * Math.PI * 2;
                 const radius = 5 + Math.pow(Math.random(), 0.9) * 43; // Start building further from the center
                 const x = Math.cos(angle) * radius;
                 const z = Math.sin(angle) * radius;
 
-                const dist = Math.sqrt(x*x + z*z);
+                const dist = Math.sqrt(x * x + z * z);
                 const downtownFactor = Math.pow(1 - Math.min(dist / 48, 1), 1.5);
 
                 // Smoothly interpolate building height
@@ -379,15 +469,15 @@
                 const positions = new Float32Array(30 * 3);
                 for (let j = 0; j < positions.length; j += 3) {
                     positions[j] = (Math.random() - 0.5) * 0.5;
-                    positions[j+1] = Math.random() * 1;
-                    positions[j+2] = (Math.random() - 0.5) * 0.5;
+                    positions[j + 1] = Math.random() * 1;
+                    positions[j + 2] = (Math.random() - 0.5) * 0.5;
                 }
                 treeGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
                 const tree = new THREE.Points(treeGeometry, treeParticleMaterial);
-                
+
                 const x = (Math.random() - 0.5) * 90;
                 const z = (Math.random() - 0.5) * 90;
-                
+
                 tree.position.set(x, 0, z);
                 treeParticles.add(tree);
             }
@@ -397,10 +487,10 @@
             const createCar = () => {
                 if (streets.length === 0) return;
                 const carGeometry = new THREE.BufferGeometry();
-                carGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([0,0,0]), 3));
+                carGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([0, 0, 0]), 3));
                 const carMaterial = new THREE.PointsMaterial({ size: 0.2, color: 0xffffff });
                 const car = new THREE.Points(carGeometry, carMaterial);
-                
+
                 const street = streets[Math.floor(Math.random() * streets.length)];
                 const speed = Math.random() * 0.05 + 0.05;
 
@@ -461,7 +551,7 @@
 
             cars.forEach(car => {
                 car.progress += car.speed / car.street.length;
-                
+
                 if (car.progress >= 1) {
                     const currentEndStr = coordToString(car.endNode);
                     const possibleNextStreets = (intersectionMap.get(currentEndStr) || []).filter(s => s.id !== car.street.id);
@@ -475,7 +565,7 @@
 
                     car.street = nextStreet;
                     car.progress = 0;
-                    
+
                     if (car.endNode.distanceTo(nextStreet.start) < 0.1) {
                         car.startNode = nextStreet.start;
                         car.endNode = nextStreet.end;
@@ -484,7 +574,7 @@
                         car.endNode = nextStreet.start;
                     }
                 }
-                
+
                 if (car.street) {
                     car.mesh.position.lerpVectors(car.startNode, car.endNode, car.progress);
                 }
@@ -510,8 +600,8 @@
         }
 
         init();
-        
-        document.addEventListener("DOMContentLoaded", function(event) {
+
+        document.addEventListener("DOMContentLoaded", function (event) {
             document.body.style.opacity = 1;
             document.querySelector('.cta-button').addEventListener('click', (e) => {
                 e.preventDefault();
@@ -527,4 +617,5 @@
         }
     </script>
 </body>
+
 </html>

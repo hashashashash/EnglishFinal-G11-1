@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,32 +10,107 @@
         .fade-in {
             animation: fadeIn 0.5s ease-in;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .pulse-icon {
             animation: pulse 2s infinite;
         }
-                @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
         }
+
         body {
             transition: background-color 0.5s, color 0.5s, opacity 0.5s ease-out;
         }
+
         .fade-out {
             opacity: 0 !important;
         }
+
+        .tremble {
+            animation: tremble 0.5s ease-in-out infinite;
+        }
+
+        @keyframes tremble {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-1px);
+            }
+
+            50% {
+                transform: translateX(1px);
+            }
+
+            75% {
+                transform: translateX(-1px);
+            }
+        }
+
+        .crumble {
+            animation: crumble 1s ease-in-out forwards;
+        }
+
+        @keyframes crumble {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(0.95);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
+
 <body class="transition-colors duration-500" style="opacity: 0;">
-    <a href="../index.html" onclick="event.preventDefault(); navigateHome();" class="fixed top-6 left-6 z-50 px-4 py-2 bg-black/20 text-white/60 rounded-full backdrop-blur-sm hover:bg-black/40 hover:text-white/90 transition-all text-sm">
+    <a href="../index.html" onclick="event.preventDefault(); navigateHome();"
+        class="fixed top-6 left-6 z-50 px-4 py-2 bg-black/20 text-white/60 rounded-full backdrop-blur-sm hover:bg-black/40 hover:text-white/90 transition-all text-sm">
         &larr; Back to Main Page
     </a>
-    <div id="app" class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+    <div id="app" class="min-h-screen flex flex-col items-center justify-center p-4 md-p-8">
         <!-- Content will be injected here by JavaScript -->
     </div>
+
+    <audio id="light-sound" loop src="https://freesound.org/data/previews/186/186943_3457662-lq.mp3"
+        preload="auto"></audio>
+    <audio id="dread-sound" loop src="https://freesound.org/data/previews/533/533810_11722390-lq.mp3"
+        preload="auto"></audio>
+    <audio id="dark-sound" loop src="https://freesound.org/data/previews/415/415391_6142149-lq.mp3"
+        preload="auto"></audio>
 
     <script>
         function navigateHome() {
@@ -60,11 +136,11 @@
                         <div class="flex justify-center">
                             <svg class="w-16 h-16 text-amber-500 pulse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
                         </div>
-                        <p class="text-lg italic text-slate-600">
-                            "With a clamor of bells that set the swallows soaring, the Festival of Summer came to the city Omelas, bright-towered by the sea."
+                                                <p class="text-lg italic text-slate-600">
+                            "With a clamor of bells that set the swallows soaring, the Festival of Summer came to the city Omelas, bright-towered by the sea. The rigging of the boats in harbor sparkled with flags."
                         </p>
                         <p class="max-w-md mx-auto text-slate-600">
-                            Welcome to the Utopia. In this story, you are not just a reader. You are a citizen. Your choices determine the fate of the city.
+                            Welcome to the Utopia, a city where happiness is not simple, but absolute. In this story, you are not just a reader. You are a citizen about to understand the true cost of joy.
                         </p>
                         <button onclick="navigate('character_select')" class="px-8 py-3 bg-teal-600 text-white rounded-full hover:bg-teal-700 transition flex items-center mx-auto gap-2 shadow-lg">
                             Enter the City
@@ -99,13 +175,13 @@
                 mood: 'light',
                 render: () => `
                     <div class="space-y-4 fade-in">
-                        <p>The city is a masterpiece of logic and beauty. As you walk through the Green Fields, you see the result of your planning: thousands of happy people. No hunger. No war.</p>
+                        <p>The city is a masterpiece of logic and beauty. As you walk through the Green Fields, you see the result of your planning: thousands of happy people. The air is clear, the banners on the racecourse snap and flutter. There is no hunger. No war.</p>
                         <div class="p-4 bg-amber-50 border-l-4 border-amber-400">
                             <p class="font-semibold text-amber-900">Elara's thought:</p>
-                            <p class="italic text-amber-800">"Happiness is based on a just discrimination of what is necessary. This society works perfectly."</p>
+                            <p class="italic text-amber-800">"Happiness is based on a just discrimination of what is necessary, what is neither necessary nor destructive, and what is destructive. This society works perfectly."</p>
                         </div>
-                        <p>But today is your Coming of Age day. You must see the foundation upon which this architecture rests.</p>
-                        <button onclick="navigate('the_room')" class="w-full mt-4 bg-slate-800 text-white p-3 rounded-lg hover:bg-slate-700 transition">Visit the Foundation</button>
+                        <p>But today is your Coming of Age day. You must see the foundation upon which this grand architecture rests.</p>
+                        <button onclick="navigate('the_descent')" class="w-full mt-4 bg-slate-800 text-white p-3 rounded-lg hover:bg-slate-700 transition">Visit the Foundation</button>
                     </div>
                 `
             },
@@ -115,13 +191,13 @@
                 mood: 'light',
                 render: () => `
                     <div class="space-y-4 fade-in">
-                        <p>The music is so sweet today it brings tears to your eyes. Children are dancing, naked and free in the summer air. The joy feels almost too intense.</p>
+                        <p>The music is so sweet today it brings tears to your eyes. Children are dancing, naked and free in the summer air, their high calls rising like swallows. The joy feels almost too intense, a boundless and generous contentment.</p>
                         <div class="p-4 bg-teal-50 border-l-4 border-teal-400">
                             <p class="font-semibold text-teal-900">Kael's thought:</p>
-                            <p class="italic text-teal-800">"Can joy this pure truly exist without a shadow? I feel a dissonance somewhere in the melody."</p>
+                            <p class="italic text-teal-800">"Can joy this pure truly exist without a shadow? I feel a dissonance somewhere in the melody of the city."</p>
                         </div>
-                        <p>The elders tell you that to truly understand the music, you must see the silence beneath it.</p>
-                        <button onclick="navigate('the_room')" class="w-full mt-4 bg-slate-800 text-white p-3 rounded-lg hover:bg-slate-700 transition">See the Silence</button>
+                        <p>The elders tell you that to truly understand the music, you must experience the silence from which it springs.</p>
+                        <button onclick="navigate('the_descent')" class="w-full mt-4 bg-slate-800 text-white p-3 rounded-lg hover:bg-slate-700 transition">See the Silence</button>
                     </div>
                 `
             },
@@ -131,13 +207,26 @@
                 mood: 'light',
                 render: () => `
                     <div class="space-y-4 fade-in">
-                        <p>You stand at the North Gate. You watch the procession. You have trained to defend this. To protect this peace. The city has no army because it needs none.</p>
+                        <p>You stand at the North Gate, watching the processions. They are decorous and wild, a shimmering of gong and tambourine. You have trained to defend this. To protect this peace. The city has no army because it has no need for soldiers.</p>
                         <div class="p-4 bg-rose-50 border-l-4 border-rose-400">
                             <p class="font-semibold text-rose-900">Jory's thought:</p>
-                            <p class="italic text-rose-800">"I would die for this city. I would kill to keep these children safe."</p>
+                            <p class="italic text-rose-800">"I would die for this city. I would kill to keep these children safe and their laughter ringing in the streets."</p>
                         </div>
-                        <p>But today, you are told that the safety of the city is not secured by swords, but by a secret.</p>
-                        <button onclick="navigate('the_room')" class="w-full mt-4 bg-slate-800 text-white p-3 rounded-lg hover:bg-slate-700 transition">Learn the Secret</button>
+                        <p>But today, you are told that the safety of Omelas is not secured by swords, but by a terrible, hidden covenant.</p>
+                        <button onclick="navigate('the_descent')" class="w-full mt-4 bg-slate-800 text-white p-3 rounded-lg hover:bg-slate-700 transition">Learn the Secret</button>
+                    </div>
+                `
+            },
+            the_descent: {
+                title: "THE DESCENT",
+                subtitle: "Beneath the Beautiful City",
+                mood: 'dread',
+                render: () => `
+                    <div class="space-y-6 fade-in text-slate-300">
+                        <p>You are led away from the festival, away from the sunlight. You descend a flight of stone stairs under one of the municipal buildings.</p>
+                        <p class="italic">The air grows cold. The sound of the festival becomes a distant, muffled drumbeat.</p>
+                        <p>At the bottom is a plain wooden door. It is locked.</p>
+                        <button onclick="navigate('the_room')" class="w-full mt-4 bg-slate-700 text-white p-3 rounded-lg hover:bg-slate-600 transition animate-pulse">Unlock the Door</button>
                     </div>
                 `
             },
@@ -147,9 +236,9 @@
                 mood: 'dark',
                 render: () => `
                     <div class="space-y-6 fade-in text-slate-200">
-                        <p>You are taken to a basement under one of the beautiful public buildings. The room is about three paces long and two wide. No window.</p>
-                        <p class="text-red-400 font-medium">In the corner sits a child. It is feeble-minded. It sits in its own filth. It is about ten, but looks six.</p>
-                        <p class="italic text-slate-400">"I will be good," it says. "Please let me out. I will be good!"</p>
+                        <p>You are taken to a basement under one of the beautiful public buildings. The room is about three paces long and two wide, a mere broom closet. The floor is damp to the touch, as cellar dirt usually is.</p>
+                        <p class="text-red-400 font-medium">In the corner sits a child. It is feeble-minded. Its buttocks and thighs are a mass of festered sores as it sits in its own excrement. It is about ten, but looks six.</p>
+                        <p class="italic text-slate-400 tremble">"I will be good," it says. "Please let me out. I will be good!"</p>
                         <div class="border-t border-slate-700 pt-4">
                             <p class="font-bold text-xl mb-2 text-amber-400 uppercase">The Terms</p>
                             <p class="text-sm mb-6">If the child were brought up into the sunlight, cleaned and fed... in that hour all the prosperity of Omelas would wither and be destroyed.</p>
@@ -177,10 +266,10 @@
                 mood: 'light',
                 render: () => `
                     <div class="space-y-6 fade-in text-slate-700">
-                        <p>You leave the room. You weep, at first. But as the weeks pass, you begin to understand the terrible math.</p>
-                        <p>You realize that your happiness is not shallow. It is profound because it is paid for.</p>
+                        <p>You leave the room. You weep, at first, or perhaps you feel a tearless rage. But as the weeks pass, you begin to perceive the terrible justice of reality, and to accept it.</p>
+                        <p>You realize that your happiness is not shallow. It is profound because it is paid for. The existence of the child, and your knowledge of it, makes possible the nobility of your architecture, the poignancy of your music, the profundity of your science.</p>
                         <div class="bg-white p-4 rounded-lg shadow-inner border border-amber-100 italic">
-                            "They dry their tears... and the summer morning is very bright."
+                            "Their tears at the bitter injustice dry when they begin to perceive the terrible justice of reality, and to accept it."
                         </div>
                         <p class="text-sm bg-amber-50 p-3 rounded text-slate-800">
                             ${state.character === 'elara' ? 'As Elara, you go on to design even more beautiful buildings, ensuring the child\'s sacrifice is never wasted.' : ''}
@@ -197,10 +286,10 @@
                 mood: 'twilight',
                 render: () => `
                     <div class="space-y-6 fade-in text-indigo-100">
-                        <p>You cannot stay. You cannot enjoy the festival knowing who pays for the wine. But you also know that saving the child would destroy the happiness of everyone else.</p>
-                        <p>So you walk out the gates of Omelas. You pass the beautiful farmlands. You walk into the darkness of the fields.</p>
+                        <p>You cannot stay. You cannot enjoy the festival knowing who pays for the wine. You cannot accept a happiness built on the suffering of an innocent. But you also know that saving the child would destroy the happiness of everyone else, a good you cannot bring yourself to spoil.</p>
+                        <p>So you walk out the gates of Omelas alone. You pass the beautiful farmlands. Night falls; you must pass down village streets, between the houses with yellow-lit windows, and on out into the darkness of the fields.</p>
                         <div class="bg-indigo-900/50 p-4 rounded-lg shadow-inner border border-indigo-700 italic">
-                            "The place they go towards is a place even less imaginable to most of us than the city of happiness."
+                            "They seem to know where they are going, the ones who walk away from Omelas."
                         </div>
                         <button onclick="navigate('analysis')" class="w-full mt-4 bg-indigo-500 text-white p-3 rounded-lg hover:bg-indigo-600 transition">Analyze This Choice</button>
                     </div>
@@ -212,10 +301,10 @@
                 mood: 'ruin',
                 render: () => `
                     <div class="space-y-6 fade-in text-stone-300">
-                        <p>You kick open the door. You lift the small, shivering child into your arms. You walk out of the basement and into the sunlight.</p>
-                        <p>The world changes instantly. The music stops. The towers of Omelas begin to crumble. Thousands of happy people suddenly feel the weight of a thousand years of misery.</p>
-                        <div class="bg-stone-800 p-4 rounded-lg border border-rose-900 font-bold text-rose-200">
-                            The city is dead. But the child is in the sun.
+                        <p>You kick open the door. You lift the small, shivering child into your arms. It is too degraded and imbecile to know any real joy, but you cannot leave it in this vile place.</p>
+                        <p>The world changes instantly. The clamor of bells is replaced by a deafening silence. The towers of Omelas begin to crumble into dust. Thousands of happy people suddenly feel the weight of a thousand years of misery, their faces turning grey and bewildered.</p>
+                        <div class="bg-stone-800 p-4 rounded-lg border border-rose-900 font-bold text-rose-200 crumble">
+                            To exchange all the goodness and grace of every life in Omelas for that single, small improvement... you have let guilt within the walls.
                         </div>
                         <button onclick="navigate('analysis')" class="w-full mt-4 bg-rose-700 text-white p-3 rounded-lg hover:bg-rose-800 transition">Analyze This Choice</button>
                     </div>
@@ -242,13 +331,41 @@
                             <span class="text-rose-600">"What is the hidden cost of your own comfort?"</span>
                         </p>
                         <button onclick="reset()" class="w-full mt-4 bg-slate-800 text-white p-3 rounded-lg hover:bg-slate-700 transition">Restart the Experience</button>
-                    </div>
+                                        </div>
                 `
             }
         };
 
+        const audioMap = {
+            light: document.getElementById('light-sound'),
+            dread: document.getElementById('dread-sound'),
+            dark: document.getElementById('dark-sound'),
+            twilight: document.getElementById('dread-sound'),
+            ruin: document.getElementById('dark-sound')
+        };
+
+        function manageAudio(mood) {
+            let userHasInteracted = false;
+            document.body.addEventListener('click', () => {
+                userHasInteracted = true;
+            }, { once: true });
+
+            Object.values(audioMap).forEach(audio => {
+                if (audio && !audio.paused) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+            });
+            const activeAudio = audioMap[mood];
+            if (activeAudio && userHasInteracted) {
+                activeAudio.volume = 0.3;
+                activeAudio.play().catch(e => console.error("Audio play failed:", e));
+            }
+        }
+
         function getMoodStyles(mood) {
             switch (mood) {
+                case 'dread': return 'bg-gradient-to-br from-slate-800 to-slate-900 text-slate-200';
                 case 'dark': return 'bg-slate-900 text-slate-100';
                 case 'ruin': return 'bg-stone-900 text-stone-200';
                 case 'twilight': return 'bg-indigo-950 text-indigo-100';
@@ -262,6 +379,7 @@
             const body = document.body;
 
             body.className = `transition-colors duration-500 ${getMoodStyles(slide.mood)}`;
+            manageAudio(slide.mood);
 
             app.innerHTML = `
                 <div class="max-w-4xl w-full bg-white/5 backdrop-blur-sm p-6 md:p-12 rounded-3xl shadow-2xl border border-white/10">
@@ -301,7 +419,7 @@
             render();
         }
 
-                // Initial render
+        // Initial render
         render();
 
         window.addEventListener('load', () => {
@@ -309,4 +427,5 @@
         });
     </script>
 </body>
+
 </html>
