@@ -109,18 +109,47 @@
             color: #1a1a1a;
         }
         
-        footer {
+                footer {
             color: #888;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 26, 26, 0.8);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .nav-bar a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        .nav-bar a:hover {
+            color: #99ccff;
         }
     </style>
 </head>
 <body>
+    <div class="nav-bar">
+        <a href="#plot">The Plot</a>
+        <a href="#themes">The Themes</a>
+        <a href="#messages">The Messages</a>
+    </div>
     <div id="scene-container"></div>
     <div class="content">
         <header>
             <div class="section-inner">
-                <h1>The Ones Who Walk Away from Omelas</h1>
+                                <h1>The Ones Who Walk Away from Omelas</h1>
                 <a href="story/index.html" class="cta-button">Experience the Interactive Story</a>
+                <a href="story/text.html" class="cta-button">Read the Original Text</a>
             </div>
         </header>
         <section class="section" id="plot">
@@ -135,6 +164,7 @@
                 <h2>The Themes</h2>
                 <p>The story explores several profound philosophical themes, most notably the conflict between utilitarianism and individual rights. It questions whether the happiness of the many can justify the suffering of the few, forcing the reader to confront uncomfortable questions about morality, justice, and the nature of happiness itself.</p>
                 <p>Another central theme is the idea of a scapegoat, a single individual who is made to bear the sins and suffering of the entire community. The child in the story serves as a symbol of the oppressed and marginalized, those who are sacrificed for the sake of the greater good.</p>
+                <a href="story/themes.html" class="cta-button">Read Full Theme Analysis</a>
             </div>
         </section>
         <section class="section" id="messages">
@@ -308,9 +338,9 @@
                 return new THREE.Points(geometry, particleMaterial);
             };
 
-            for (let i = 0; i < 100; i++) {
+                        for (let i = 0; i < 100; i++) {
                 const angle = Math.random() * Math.PI * 2;
-                const radius = Math.pow(Math.random(), 0.9) * 48; // Power < 1 biases towards the edge
+                const radius = 5 + Math.pow(Math.random(), 0.9) * 43; // Start building further from the center
                 const x = Math.cos(angle) * radius;
                 const z = Math.sin(angle) * radius;
 
